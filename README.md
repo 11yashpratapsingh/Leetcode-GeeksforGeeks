@@ -1,3 +1,3 @@
-# Leetcode
+# Leetcode & GeeksForGeeks
 
-This Repository contains the solution of Leetcode and GeeksforGeeks.💗
+This Repository contains the solution of Leetcode and GeeksforGeeks 💗
