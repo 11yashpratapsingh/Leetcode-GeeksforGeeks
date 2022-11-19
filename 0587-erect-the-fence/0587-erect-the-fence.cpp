@@ -4,7 +4,7 @@ public:
     // Cross product of two vectors AB and AC
     // returns positive for counter clockwise
     // turn and negative for clockwise turn
-    int getRotAgle(vector<int> a, vector<int> b, vector<int> c){
+    int getRotAgle(vector<int>& a, vector<int>& b, vector<int>& c){
         return (b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]);
     }
     
