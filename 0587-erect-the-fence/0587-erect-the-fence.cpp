@@ -20,7 +20,7 @@ public:
         for(int i=2;i<n;i++){
             int upSz = upHull.size();
             
-            while(upHull.size() >=2 && getRotAgle(upHull[upSz-2],upHull[upSz-1],trees[i])>0){
+            while(upSz >=2 && getRotAgle(upHull[upSz-2],upHull[upSz-1],trees[i])>0){
                 upHull.pop_back();
                 upSz--;
             }
@@ -33,7 +33,7 @@ public:
         for(int i=n-3;i>=0;i--){
             int lwSz = lwHull.size();
             
-            while(lwHull.size() >=2 && getRotAgle(lwHull[lwSz-2],lwHull[lwSz-1],trees[i])>0){
+            while(lwSz >=2 && getRotAgle(lwHull[lwSz-2],lwHull[lwSz-1],trees[i])>0){
                 lwHull.pop_back();
                 lwSz--;
             }
