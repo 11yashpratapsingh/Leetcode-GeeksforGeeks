@@ -82,24 +82,21 @@ Node* buildTree(string str) {
 class Solution{
     public:
     
-    void func(Node *root, vector<int> &v){
-        if(!root) return;
+    // void func(Node *root, vector<int> &v){
+    //     if(!root) return;
         
-        if(root->left) func(root->left,v);
-        v.push_back(root->data);
-        if(root->right) func(root->right,v);
-    }
+    //     if(root->left) func(root->left,v);
+    //     v.push_back(root->data);
+    //     if(root->right) func(root->right,v);
+    // }
     
     bool areAnagrams(Node *root1, Node *root2)
     {
-        vector<int> v1, v2;
-        func(root1, v1);
-        func(root2, v2);
+        if(!root1 || !root2) return root1 == root2;
         
-        sort(v1.begin(),v1.end());
-        sort(v2.begin(),v2.end());
+        if(root1->data != root2->data) return false;
         
-        return v1 == v2;
+        return areAnagrams(root1->left,root2->right) && areAnagrams(root1->right,root2->left);
     }
 };
 
