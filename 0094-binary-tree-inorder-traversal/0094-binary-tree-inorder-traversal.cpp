@@ -15,7 +15,6 @@ public:
     // Iterative
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
-        if(root == NULL) return ans;
         stack<TreeNode*> st;
         while(root || !st.empty()){
             while(root){
