@@ -35,8 +35,7 @@ public:
         int maxA = 0;
         for (int i = 0; i < n; i++) {
             long long prod = (lt[i]*rt[i])%mod;
-            prod = (prod*arr[i])%mod;
-            maxA = (maxA + prod)%mod;
+            maxA = (maxA + (prod*arr[i])%mod)%mod;
         }
         return maxA;
     }
