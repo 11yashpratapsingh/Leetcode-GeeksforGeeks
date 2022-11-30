@@ -10,20 +10,40 @@
  */
 class Solution {
 public:
+    
+    ListNode* func(ListNode* head){
+        ListNode* prev = NULL;
+        ListNode* curr= head;
+        ListNode* nxt=NULL;
+        
+        while(curr){
+            nxt = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
+        }
+        return prev;
+    }
+    
     void reorderList(ListNode* head) {
-        vector<ListNode*> v;
-        ListNode* tmp = head;
-        while(tmp){
-            v.push_back(tmp);
-            tmp = tmp->next;
+        ListNode* sl = head;
+        ListNode* ft = head;
+        while(ft && ft->next){
+            sl = sl->next;
+            ft = ft->next->next;
         }
         
-        int l = 1, r= v.size()-1;
-        for(int i=0;i<v.size();i++){
-            if(i&1) head->next = v[l++];
-            else head->next = v[r--];
-            head = head->next;
+        ListNode* second = func(sl->next);
+        sl->next = NULL;
+        ListNode* first = head;
+        
+        while(second){
+            ListNode* tmp1 = first->next;
+            ListNode* tmp2 = second->next;
+            first->next = second;
+            second->next = tmp1;
+            first = tmp1;
+            second = tmp2;
         }
-        head->next = NULL;
     }
 };
