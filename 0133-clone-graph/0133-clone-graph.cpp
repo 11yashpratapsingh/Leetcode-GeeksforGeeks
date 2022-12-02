@@ -23,16 +23,14 @@ class Solution {
 public:
     
     Node* dfs(unordered_map<Node*, Node*>& mp, Node* curr){
-        vector<Node*> negh;
         Node* clone = new Node(curr->val);
         mp[curr] = clone;
         for(auto it: curr->neighbors){
             if(mp.find(it) != mp.end()){
-                negh.push_back(mp[it]);
+                clone->neighbors.push_back(mp[it]);
             }
-            else negh.push_back(dfs(mp,it));
+            else clone->neighbors.push_back(dfs(mp,it));
         }
-        clone->neighbors = negh;
         return clone;
     }
     
