@@ -19,25 +19,23 @@ public:
                 dist = v[i];
             }
         }
-        return cnt >= k;
+        return cnt>=k;
     }
 
     int solve(int n, int k, vector<int> &stalls) {
     
         // Write your code here
         sort(stalls.begin(),stalls.end());
-        int ans = INT_MIN;
         int lw = 1, hg = stalls[n-1] - stalls[0];
         while(lw<=hg){
             int mid = lw + (hg-lw)/2;
             if(func(stalls,n,k,mid)){
-                ans = max(ans,mid);
                 lw = mid+1;
             }
             else hg = mid-1;
         }
         
-        return ans;
+        return hg;
     }
 };
 
