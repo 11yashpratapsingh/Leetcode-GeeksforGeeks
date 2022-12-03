@@ -9,37 +9,29 @@ using namespace std;
 
 class Solution {
 public:
-  
-  bool func(vector<int> &arr, int mid, int n ,int k){
-      int cnt = 1;
-      int sm = arr[0];
-      
-      for(int i=0;i<n;i++){
-          if(arr[i] - sm >= mid){
-              cnt++;
-              if(cnt == k) return true;
-              sm = arr[i];
-          }
-      }
-      
-      return false;
-  }
-  
-    int solve(int n, int k, vector<int> &arr) {
+
+    bool func(vector<int>& v, int n, int k, int mid){
+        int cnt = 1;
+        int dist = v[0];
+        for(int i=1;i<n;i++){
+            if(v[i]-dist >= mid){
+                cnt++;
+                dist = v[i];
+            }
+        }
+        return cnt >= k;
+    }
+
+    int solve(int n, int k, vector<int> &stalls) {
     
         // Write your code here
-        sort(arr.begin(),arr.end());
-        int sm = -1;
-        int ans=-1;
-        for(int i=0;i<n;i++){
-            sm = max(sm,arr[i]);
-        }
-        
-        int lw = 0, hg = sm;
+        sort(stalls.begin(),stalls.end());
+        int ans = INT_MIN;
+        int lw = 1, hg = stalls[n-1] - stalls[0];
         while(lw<=hg){
             int mid = lw + (hg-lw)/2;
-            if(func(arr,mid,n,k)){
-                ans = mid;
+            if(func(stalls,n,k,mid)){
+                ans = max(ans,mid);
                 lw = mid+1;
             }
             else hg = mid-1;
