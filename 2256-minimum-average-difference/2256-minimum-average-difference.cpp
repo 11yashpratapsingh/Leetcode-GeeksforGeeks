@@ -11,12 +11,12 @@ public:
         for(int i=0;i<n;i++){
             currSum += nums[i];
             int avg1 = currSum/(i+1);
+            int avg2;
             if(i==n-1){
-                if(avg1<val) return n-1;
-                else break;
+                avg2 = 0;
             }
+            else avg2 = (totSum - currSum)/(n-i-1);
             
-            int avg2 = (totSum - currSum)/(n-i-1);
             if(abs(avg2-avg1)<val){
                 val = abs(avg2-avg1);
                 idx = i;
