@@ -12,9 +12,9 @@
 class Solution {
 public:
     
-    void func(TreeNode* root, string& s){
+    void func(TreeNode* root, string &s){
         if(!root) return;
-        if(root->left == NULL && root->right == NULL) s += to_string(root->val)+ '#';
+        if(root->left == NULL && root->right == NULL) s += root->val + 'a' + '#';
         func(root->left,s);
         func(root->right,s);
     }
