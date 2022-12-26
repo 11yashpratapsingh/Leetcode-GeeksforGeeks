@@ -33,8 +33,9 @@ class Solution{
             if(ans == a[i]) cnt++;
         }
         
-        if(cnt > size/2) return ans;
-        else return -1;
+        return cnt > size/2 ? ans : -1;
+        // if(cnt > size/2) return ans;
+        // else return -1;
     }
 };
 
