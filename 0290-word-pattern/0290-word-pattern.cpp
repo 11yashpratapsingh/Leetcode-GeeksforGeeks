@@ -14,7 +14,7 @@ public:
         unordered_map<char,string> mp;
         set<string> st;
         for(int i=0;i<pattern.length();i++){
-            if(mp.find(pattern[i]) != mp.end()){
+            if(mp.count(pattern[i])){
                 if(mp[pattern[i]] != v[i]) return false;
             }
             else{
