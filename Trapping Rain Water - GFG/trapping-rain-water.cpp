@@ -11,21 +11,23 @@ class Solution{
     public:
     long long trappingWater(int arr[], int n){
         // code here
-        vector<int> pre(n,0), suf(n,0);
-        
-        pre[0] = arr[0];
-        for(int i=1;i<n;i++){
-            pre[i] = max(pre[i-1],arr[i]);
-        }
-        
-        suf[n-1] = arr[n-1];
-        for(int i=n-2;i>=0;i--){
-            suf[i] = max(suf[i+1],arr[i]);
-        }
         
         long long ans = 0;
-        for(int i=0;i<n;i++){
-            ans += min(pre[i],suf[i]) - arr[i];
+        int l = 0, r = n-1;
+        int ltMx = 0, rtMx = 0;
+        
+        while(l<=r){
+            if(arr[l]<=arr[r]){
+                if(ltMx<=arr[l]) ltMx = arr[l];
+                else ans += ltMx - arr[l];
+                
+                l++;
+            }
+            else{
+                if(rtMx<=arr[r]) rtMx = arr[r];
+                else ans += rtMx-arr[r];
+                r--;
+            }
         }
         
         return ans;
