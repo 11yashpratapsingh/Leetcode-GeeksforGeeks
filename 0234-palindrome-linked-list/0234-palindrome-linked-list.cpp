@@ -28,17 +28,16 @@ public:
     bool isPalindrome(ListNode* head) {
         ListNode* sl = head;
         ListNode* ft = head;
-        while(ft->next && ft->next->next){
+        while(ft && ft->next){
             sl = sl->next;
             ft = ft->next->next;
         }
         
-        sl->next = reverseNode(sl->next);
-        sl = sl->next;
-    
-        while(sl){
-            if(head->val != sl->val) return false;
-            sl = sl->next;
+        ListNode* rev = reverseNode(sl);
+        
+        while(rev && head){
+            if(rev->val != head->val) return false;
+            rev = rev->next;
             head = head->next;
         }
         
