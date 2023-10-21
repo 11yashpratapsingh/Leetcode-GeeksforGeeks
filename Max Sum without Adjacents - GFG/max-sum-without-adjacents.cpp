@@ -21,12 +21,26 @@ public:
         v[n] = max(incl,excl);
         return v[n];
     }
+    
+    
 
 	// calculate the maximum sum with out adjacent
 	int findMaxSum(int *arr, int n) {
 	    // code here
-	    vector<int> v(n,-1);
-	    return solve(arr,n-1,v);
+	    //vector<int> v(n,0);
+	    //return solve(arr,n-1,v);
+	    
+	    //v[0] = arr[0];
+	    int prev2 = 0;
+	    int prev1 = arr[0];
+	    for(int i=1;i<n;i++){
+	        int incl = arr[i] + prev2;
+            int excl = 0 + prev1;
+            prev2 = prev1;
+            prev1 = max(incl,excl);
+	    }
+	    
+	    return prev1;
 	}
 };
 
