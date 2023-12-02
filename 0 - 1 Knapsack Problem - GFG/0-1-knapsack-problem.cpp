@@ -54,6 +54,24 @@ class Solution
         return dp[n-1][w];
     }
     
+    int spaceOpt(int w, int n, int wt[], int val[]){
+        vector<int> prev(w+1,0), curr(w+1);
+        
+        for(int i=wt[0];i<=w;i++) prev[i] = val[0];
+        
+        for(int i=1;i<n;i++){
+            for(int j=0;j<=w;j++){
+                int notTake = 0 + prev[j];
+                int take = INT_MIN;
+                if(wt[i]<=j) take = val[i] + prev[j-wt[i]];
+                
+                curr[j] = max(notTake,take);
+            }
+            prev = curr;
+        }
+        return prev[w];
+    }
+    
     //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int W, int wt[], int val[], int n) 
     { 
